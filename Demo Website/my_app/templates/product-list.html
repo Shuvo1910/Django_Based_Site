@@ -1,0 +1,45 @@
+{% extends 'master/base.html' %}
+{% block content %}
+  <h2>Product List</h2>
+
+  {% if request.user.user_type == 'Admin' %}
+    <a href="{% url 'add_product' %}" class="btn btn-primary">Add Product</a>
+  {% endif %}
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>SL</th>
+        <th>Image</th>
+        <th>Name</th>
+        <th>Total Amount</th>
+        <th>Created By</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for data in product_data %}
+        <tr>
+          <td>{{ forloop.counter }}</td>
+          <td>
+            {% if data.image %}
+              <img src="{{ data.image.url }}" width="100px" alt="" />
+            {% else %}
+              No Preview
+            {% endif %}
+          </td>
+          <td>{{ data.product_name }}</td>
+          <td>{{ data.total }}</td>
+          <td>{{ data.created_by }}</td>
+          <td>
+            <a href="{% url 'product_details' data.id %}" class="badge bg-info">View</a>
+            {% if request.user.user_type == 'Admin' %}
+              <a href="{% url 'update_product' data.id %}" class="badge bg-primary">Edit</a>
+              <a href="{% url 'delete_product' data.id %}" class="badge bg-danger">Delete</a>
+            {% endif %}
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

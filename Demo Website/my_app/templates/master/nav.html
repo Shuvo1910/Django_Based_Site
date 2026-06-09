@@ -1,0 +1,23 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+  <div class="container">
+    <a class="navbar-brand text-primary fw-bold" href="{% url 'dashboard_page' %}"><b>Quit</b></a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'dashboard_page' %}">Dashboard</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'product_list' %}">Products</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link text-danger" href="{% url 'logout_page' %}">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,10 @@
+{% extends 'master/base.html' %}
+{% block content %}
+  <h1>{{ title }}</h1>
+  <form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form_data.as_p }}
+
+    <button type="submit" class="btn btn-primary">{{ btn_name }}</button>
+  </form>
+{% endblock %}
